@@ -25,7 +25,7 @@ public class PrisonerService {
     public List<Prisoner> findAll() { return repository.findAll();}
 
     public void create(Prisoner prisoner) {
-        repository.create(prisoner);
+        repository.save(prisoner);
     }
 
     /**
@@ -34,7 +34,7 @@ public class PrisonerService {
      * @param prisoner prisoner to be updated
      */
     public void update(Prisoner prisoner) {
-        repository.update(prisoner);
+        repository.save(prisoner);
     }
 
     /**
@@ -43,8 +43,7 @@ public class PrisonerService {
      * existing prisoner's id to be deleted
      */
     public void delete(Integer id) {
-        repository.delete(repository.find(id).orElseThrow());
+        repository.deleteById(id);
     }
-
 
 }
