@@ -39,13 +39,7 @@ public interface Repository<E, K> {
      *
      * @param entity object to be deleted
      */
-    void delete(E entity);
 
-    /**
-     * Update existing object in the data store.
-     *
-     * @param entity object to be updated
-     */
     void update(E entity);
 
 }

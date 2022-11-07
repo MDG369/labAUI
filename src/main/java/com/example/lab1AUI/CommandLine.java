@@ -34,6 +34,7 @@ public class CommandLine implements CommandLineRunner {
                             "addPrisoner - add a prisoner\n" +
                             "addPrison - add a prison\n" +
                             "deletePrisoner - delete a prisoner by id\n" +
+                            "deletePrison - delete a prison and its prisoners" +
                             "help - list available commands\n" +
                             "exit - exit the program");
                     break;
@@ -55,8 +56,9 @@ public class CommandLine implements CommandLineRunner {
                     deletePrisoner(scan);
                     break;
                 case "deletePrison":
-                    // TODO deleting prisons + cascade delete prisoners
-                    System.out.println("Not yet implemented");
+                    System.out.println("Please input the name of the prison:");
+                    prisonService.delete(scan.nextLine());
+                    System.out.println("Prison and its prisoners deleted successfully");
                     break;
                 default:
                     System.out.println("Incorrect command");

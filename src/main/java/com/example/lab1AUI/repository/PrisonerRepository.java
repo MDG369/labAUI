@@ -37,7 +37,7 @@ public class PrisonerRepository implements Repository<Prisoner, Integer> {
         storage.prisoners.add(entity);
     }
 
-    @Override
+
     public void delete(Prisoner entity) {
         storage.prisoners.remove(entity);
     }

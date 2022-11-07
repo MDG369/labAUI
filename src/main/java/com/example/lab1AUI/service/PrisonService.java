@@ -17,6 +17,6 @@ public class PrisonService {
     public Optional<Prison> find(String name) {return repository.find(name);}
     public List<Prison> findAll(){return repository.findAll();}
     public void create(Prison prison) {repository.create(prison);}
-    public void delete(Prison prison) {repository.delete(prison);}
+    public void delete(String prison) {repository.delete(prison);}
 
 }

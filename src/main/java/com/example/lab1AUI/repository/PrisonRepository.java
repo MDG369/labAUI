@@ -6,6 +6,7 @@ import com.example.lab1AUI.entity.Prison;
 import com.example.lab1AUI.entity.Prisoner;
 import com.example.lab1AUI.service.PrisonerService;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 @org.springframework.stereotype.Repository
@@ -35,15 +36,23 @@ public class PrisonRepository implements Repository<Prison, String> {
         storage.prisons.add(entity);
     }
 
-    @Override
-    public void delete(Prison entity) {
-        throw new UnsupportedOperationException("Operation not implemented");
-//      String name = entity.getName();
-//      for(int i = 0; i <storage.prisoners.size(); i++){
-//          if(storage.prisoners.get(i).getPrison().equals(name)){
-//
-//          }
-//      }
+
+    public void delete(String entity) {
+        Iterator<Prisoner> it = storage.prisoners.iterator();
+        while(it.hasNext()){
+            Prisoner pris = it.next();
+            if(pris.getPrison().getName().equals(entity)){
+                it.remove();
+//                storage.prisoners.get(i).setPrison(Prison.builder().name("null").build());
+            }
+          }
+        Iterator<Prison> it2 = storage.prisons.iterator();
+        while(it2.hasNext()){
+            Prison pris = it2.next();
+            if(pris.getName().equals(entity)){
+                it2.remove();
+            }
+        }
     }
 
     @Override
