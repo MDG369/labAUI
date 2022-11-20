@@ -4,6 +4,7 @@ import com.example.lab1AUI.entity.Prisoner;
 import com.example.lab1AUI.repository.PrisonerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,7 @@ public class PrisonerService {
 
     @Autowired
     public PrisonerService(PrisonerRepository repository){this.repository = repository;}
-    public Optional<Prisoner> find(Integer id) {return repository.find(id);}
+    public Optional<Prisoner> find(Integer id) {return repository.findPrisonerById(id);}
 
 
     /**
@@ -24,8 +25,8 @@ public class PrisonerService {
      */
     public List<Prisoner> findAll() { return repository.findAll();}
 
-    public void create(Prisoner prisoner) {
-        repository.save(prisoner);
+    public Prisoner create(Prisoner prisoner) {
+        return repository.save(prisoner);
     }
 
     /**
@@ -33,6 +34,7 @@ public class PrisonerService {
      *
      * @param prisoner prisoner to be updated
      */
+    @Transactional
     public void update(Prisoner prisoner) {
         repository.save(prisoner);
     }
@@ -42,6 +44,7 @@ public class PrisonerService {
      *
      * existing prisoner's id to be deleted
      */
+    @Transactional
     public void delete(Integer id) {
         repository.deleteById(id);
     }

@@ -26,7 +26,6 @@ public class InitializedData {
         prisonService.create(alcatraz);
 
         Prisoner jan = Prisoner.builder()
-                .id(1)
                 .name("Jan")
                 .surname("Kowalski")
                 .age(34)
@@ -34,7 +33,6 @@ public class InitializedData {
                 .prison(alcatraz)
                 .build();
         Prisoner bogdan = Prisoner.builder()
-                .id(2)
                 .name("Bogdan")
                 .surname("Nowak")
                 .age(25)
@@ -42,7 +40,6 @@ public class InitializedData {
                 .prison(alcatraz)
                 .build();
         Prisoner adam = Prisoner.builder()
-                .id(3)
                 .name("Adam")
                 .surname("Czarnecki")
                 .age(30)

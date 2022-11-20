@@ -67,8 +67,6 @@ public class CommandLine implements CommandLineRunner {
 
     private void addPrisoner(Scanner scan){
         Prisoner prisoner = new Prisoner();
-        System.out.println("Please input the id of the prisoner:");
-        prisoner.setId(Integer.parseInt(scan.nextLine()));
         System.out.println("Please input the name of the prisoner:");
         prisoner.setName(scan.nextLine());
         System.out.println("Please input the surname of the prisoner:");
