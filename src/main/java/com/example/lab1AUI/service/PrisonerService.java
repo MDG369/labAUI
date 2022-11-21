@@ -1,5 +1,6 @@
 package com.example.lab1AUI.service;
 
+import com.example.lab1AUI.entity.Prison;
 import com.example.lab1AUI.entity.Prisoner;
 import com.example.lab1AUI.repository.PrisonerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ public class PrisonerService {
     public PrisonerService(PrisonerRepository repository){this.repository = repository;}
     public Optional<Prisoner> find(Integer id) {return repository.findPrisonerById(id);}
 
-
     /**
      * Creates new prisoner.
      *
@@ -25,6 +25,12 @@ public class PrisonerService {
      */
     public List<Prisoner> findAll() { return repository.findAll();}
 
+    public List<Prisoner> findAll(Prison pris) {
+        return repository.findAllByPrison(pris);
+    }
+    public Optional<Prisoner> findByIdAndPrisonName(Integer id, String prison_name){
+        return repository.findPrisonerByIdAndPrisonName(id, prison_name);
+    }
     public Prisoner create(Prisoner prisoner) {
         return repository.save(prisoner);
     }

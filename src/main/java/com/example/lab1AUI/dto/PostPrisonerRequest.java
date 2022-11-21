@@ -12,6 +12,8 @@ import lombok.ToString;
 import com.example.lab1AUI.entity.Prisoner;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
+
 @Getter
 @Setter
 @Builder
@@ -29,13 +31,13 @@ public class PostPrisonerRequest {
     private String prison;
 
     public static Function<PostPrisonerRequest, Prisoner> dtoToEntityMapper(
-            Function<String, Prison> prisonFunction) {
+    Supplier<Prison>prisonSupplier) {
         return request -> Prisoner.builder()
                 .name(request.getName())
                 .surname(request.getSurname())
                 .age(request.getAge())
                 .cell_number(request.getCell_number())
-                .prison(prisonFunction.apply(request.getPrison()))
+                .prison(prisonSupplier.get())
                 .build();
     }
 }

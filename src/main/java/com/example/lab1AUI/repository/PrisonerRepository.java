@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface PrisonerRepository extends JpaRepository<Prisoner, Integer> {
     Optional<Prisoner> findPrisonerById(Integer id);
     List<Prisoner> findAllByPrison(Prison Prison);
+    Optional<Prisoner> findPrisonerByIdAndPrisonName(Integer id, String prison_name);
 }

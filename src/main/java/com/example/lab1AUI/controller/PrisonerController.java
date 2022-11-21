@@ -46,7 +46,7 @@ public class PrisonerController {
     @PostMapping
     public ResponseEntity<Void> postPrisoner(@RequestBody PostPrisonerRequest request, UriComponentsBuilder builder) {
         Prisoner pris = PostPrisonerRequest
-                .dtoToEntityMapper(name -> prisonService.find(name).orElseThrow())
+                .dtoToEntityMapper(() -> null)
                 .apply(request);
         pris = prisonerService.create(pris);
         return ResponseEntity.created(builder.pathSegment("api", "prisoners", "{id}")
@@ -63,4 +63,15 @@ public class PrisonerController {
             return ResponseEntity.notFound().build();
         }
     }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deletePrisoner(@PathVariable("id") Integer id) {
+        Optional<Prisoner> prisoner = prisonerService.find(id);
+        if (prisoner.isPresent()) {
+            prisonerService.delete(prisoner.get().getId());
+            return ResponseEntity.accepted().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
