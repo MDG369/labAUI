@@ -45,7 +45,7 @@ public class PrisonController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
-    @PostMapping("{name}")
+    @PostMapping("{name}/prisoners")
     public ResponseEntity<Void> postPrisoner(@PathVariable("name") String name,
                                               @RequestBody PostPrisonerRequest request,
                                               UriComponentsBuilder builder){
@@ -55,7 +55,7 @@ public class PrisonController {
                     .dtoToEntityMapper(prison::get)
                     .apply(request);
             pris = prisonerService.create(pris);
-            return ResponseEntity.created(builder.pathSegment("api", "prisons", "{name}", "{id}")
+            return ResponseEntity.created(builder.pathSegment("api", "prisons", "{name}","prisoners", "{id}")
                     .buildAndExpand(prison.get().getName(), pris.getId()).toUri()).build();
         } else {
             return ResponseEntity.notFound().build();
