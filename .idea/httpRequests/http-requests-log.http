@@ -1,0 +1,373 @@
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T143638.200.json
+
+###
+
+DELETE http://localhost:8080/api/prisons/Shawshank
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T143621.200.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "size": 700
+}
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T143604.200.json
+
+###
+
+POST http://localhost:8080/api/prisons
+Content-Type: application/json
+
+{
+  "name": "Shawshank",
+  "size": 500
+}
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T143515.200.json
+
+###
+
+GET http://localhost:8080/api/prisons/Alcatraz
+
+<> 2022-11-22T143511.200.json
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T143458.200.json
+
+###
+
+DELETE http://localhost:8080/api/prisoners/1
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T143440.200.json
+
+###
+
+POST http://localhost:8080/api/prisoners
+Content-Type: application/json
+
+{
+  "name": "Andrzej",
+  "surname": "Kowalski",
+  "age": 18,
+  "cell_number": 12,
+  "prison": "Alcatraz"
+}
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T143421.200.json
+
+###
+
+PUT http://localhost:8080/api/prisoners/2
+Content-Type: application/json
+
+{
+  "name": "Jan-Krzysztof",
+  "surname": "Kowalski",
+  "age": 19,
+  "cell_number": 202
+}
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T143355.200.json
+
+###
+
+GET http://localhost:8080/api/prisons/Alcatraz
+
+<> 2022-11-22T133706.200.json
+
+###
+
+POST http://localhost:8080/api/prisons/Alcatraz/prisoners
+Content-Type: application/json
+
+{
+  "name": "Marian",
+  "surname": "Niedzicki",
+  "age": 25,
+  "cell_number": 121
+}
+
+###
+
+GET http://localhost:8080/api/prisons/Alcatraz
+
+<> 2022-11-22T133623.200.json
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T133619.200.json
+
+###
+
+POST http://localhost:8080/api/prisons/Alcatraz/prisoners
+Content-Type: application/json
+
+{
+  "name": "Marian",
+  "surname": "Niedzicki",
+  "age": 25,
+  "cell_number": 121,
+  "prison": "Alcatraz"
+}
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T114825.200.json
+
+###
+
+GET http://localhost:8080/api/prisoners/2
+
+<> 2022-11-22T114815.200.json
+
+###
+
+GET http://localhost:8080/api/prisoners/4
+
+###
+
+GET http://localhost:8080/api/prisoners/4
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T114745.200.json
+
+###
+
+GET http://localhost:8080/api/prisoners/4
+
+###
+
+GET http://localhost:8080/api/prisoners/4
+
+###
+
+GET http://localhost:8080/api/prisoners
+
+<> 2022-11-22T114645.200.json
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T114638.200.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "size": 700
+}
+
+###
+
+POST http://localhost:8080/api/prisons
+Content-Type: application/json
+
+{
+  "name": "Shawshank",
+  "size": 500
+}
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T114616.200.json
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T114515.200.json
+
+###
+
+POST http://localhost:8080/api/prisons
+Content-Type: application/json
+
+{
+  "name": "Shawshank",
+  "size": 500
+}
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T114451.200.json
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T113547.200.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "name": "TestTest"
+}
+
+<> 2022-11-22T113410.500.json
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T113123.200.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "name": "TestTest"
+}
+
+<> 2022-11-22T113107.500.json
+
+###
+
+DELETE http://localhost:8080/api/prisons/Shawshank
+
+###
+
+DELETE http://localhost:8080/api/prisons/Shawshank
+
+###
+
+PUT http://localhost:8080/api/prisoners/2
+Content-Type: application/json
+
+{
+  "name": "Jan-Krzysztof",
+  "surname": "Kowalski",
+  "age": 19,
+  "cell_number": 202
+}
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz/3
+Content-Type: application/json
+
+{
+  "name": "Jan-Krzysztof",
+  "surname": "Kowalski",
+  "age": 19,
+  "cell_number": 202
+}
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "name": "TestTest"
+}
+
+<> 2022-11-22T112838.500.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "name": "TestTest"
+}
+
+<> 2022-11-22T112802.500.json
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T112747.200.json
+
+###
+
+POST http://localhost:8080/api/prisons
+Content-Type: application/json
+
+{
+  "name": "Shawshank"
+}
+
+###
+
+GET http://localhost:8080/api/prisons/
+
+<> 2022-11-22T112708.200.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+  "name": "TestTest"
+}
+
+<> 2022-11-22T112655.500.json
+
+###
+
+PUT http://localhost:8080/api/prisons/Alcatraz
+Content-Type: application/json
+
+{
+ "name": "Test"
+}
+
+<> 2022-11-22T112441.405.json
+
+###
+
