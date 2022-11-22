@@ -25,6 +25,7 @@ public class GetPrisonsResponse {
     @EqualsAndHashCode
     public static class PrisonEntry {
         private String name;
+        private int size;
     }
 
     @Singular
@@ -36,6 +37,7 @@ public class GetPrisonsResponse {
             prisons.stream()
                     .map(prison -> PrisonEntry.builder()
                             .name(prison.getName())
+                            .size(prison.getSize())
                             .build())
                     .forEach(response::prison);
             return response.build();

@@ -61,6 +61,16 @@ public class PrisonController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping
+    public ResponseEntity<Void> postPrison(@RequestBody PostPrisonRequest request,
+                                           UriComponentsBuilder builder){
+        Prison prison = PostPrisonRequest
+                .dtoToEntityMapper()
+                .apply(request);
+        prison = prisonService.create(prison);
+        return ResponseEntity.created(builder.pathSegment("api", "prisoner", "{name}")
+                .buildAndExpand(prison.getName()).toUri()).build();
+    }
     @DeleteMapping("{name}/{id}")
     public ResponseEntity<Void> deletePrisoner(@PathVariable("name") String name,
                                                 @PathVariable("id") Integer id) {
@@ -72,6 +82,16 @@ public class PrisonController {
             return ResponseEntity.notFound().build();
         }
     }
+    @DeleteMapping("{name}")
+    public ResponseEntity<Void> deletePrison(@PathVariable("name") String name){
+        Optional<Prison> prison = prisonService.find(name);
+        if(prison.isPresent()) {
+            prisonService.delete(prison.get());
+            return ResponseEntity.accepted().build();
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     @PutMapping("{name}/{id}")
     public ResponseEntity<Void> putPrisoner(@PathVariable("name") String name,
                                              @RequestBody PutPrisonerRequest request,
@@ -80,6 +100,18 @@ public class PrisonController {
         if (prisoner.isPresent()) {
             PutPrisonerRequest.dtoToEntityUpdater().apply(prisoner.get(), request);
             prisonerService.update(prisoner.get());
+            return ResponseEntity.accepted().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("{name}")
+    public ResponseEntity<Void> putPrison(@RequestBody PutPrisonRequest request, @PathVariable("name") String name){
+        Optional<Prison> pris = prisonService.find(name);
+        if (pris.isPresent()) {
+            PutPrisonRequest.dtoToEntityUpdater().apply(pris.get(), request);
+            prisonService.update(pris.get());
             return ResponseEntity.accepted().build();
         } else {
             return ResponseEntity.notFound().build();

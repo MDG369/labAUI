@@ -18,4 +18,5 @@ import java.io.Serializable;
 public class Prison implements Serializable {
     @Id
     public String name;
+    public int size;
 }

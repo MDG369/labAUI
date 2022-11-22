@@ -22,6 +22,7 @@ public class InitializedData {
     private synchronized void init(){
         Prison alcatraz = Prison.builder()
                 .name("Alcatraz")
+                .size(300)
                 .build();
         prisonService.create(alcatraz);
 
