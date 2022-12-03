@@ -9,10 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import com.example.lab1AUI.entity.Prisoner;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Getter
 @Setter
