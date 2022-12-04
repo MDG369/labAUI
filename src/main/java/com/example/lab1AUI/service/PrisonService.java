@@ -14,11 +14,7 @@ public class PrisonService {
     private PrisonRepository repository;
     @Autowired
     public PrisonService(PrisonRepository repository) {this.repository = repository;}
-
     public Optional<Prison> find(String name) {return repository.findPrisonByName(name);}
-    public List<Prison> findAll(){return repository.findAll();}
     public Prison create(Prison prison) {return repository.save(prison);}
     public void delete(Prison prison) {repository.delete(prison);}
-    @Transactional
-    public void update(Prison prison ){repository.save(prison);}
 }

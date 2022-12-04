@@ -8,6 +8,5 @@ import java.util.Optional;
 public interface PrisonRepository extends JpaRepository<Prison,String> {
     Optional<Prison> findPrisonByName(String id);
 
-    List<Prison> findAll();
 
 }

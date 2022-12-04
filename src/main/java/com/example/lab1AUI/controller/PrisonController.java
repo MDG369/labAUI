@@ -24,13 +24,7 @@ public class PrisonController {
         this.prisonerService = prisonerService;
         this.prisonService = prisonService;
     }
-    @GetMapping
-    public ResponseEntity<GetPrisonsResponse> getPrisons(){
-        List<Prison> all = prisonService.findAll();
-        Function<Collection<Prison>, GetPrisonsResponse> mapper = GetPrisonsResponse.entityToDtoMapper();
-        GetPrisonsResponse response = mapper.apply(all);
-        return ResponseEntity.ok(response);
-    }
+
     @GetMapping("{name}")
     public ResponseEntity<GetPrisonersResponse> getPrisoners(@PathVariable("name") String name){
         Optional<Prison> prison = prisonService.find(name);
@@ -61,16 +55,6 @@ public class PrisonController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PostMapping
-    public ResponseEntity<Void> postPrison(@RequestBody PostPrisonRequest request,
-                                           UriComponentsBuilder builder){
-        Prison prison = PostPrisonRequest
-                .dtoToEntityMapper()
-                .apply(request);
-        prison = prisonService.create(prison);
-        return ResponseEntity.created(builder.pathSegment("api", "prisoner", "{name}")
-                .buildAndExpand(prison.getName()).toUri()).build();
-    }
     @DeleteMapping("{name}/{id}")
     public ResponseEntity<Void> deletePrisoner(@PathVariable("name") String name,
                                                 @PathVariable("id") Integer id) {
@@ -79,16 +63,6 @@ public class PrisonController {
             prisonerService.delete(prisoner.get().getId());
             return ResponseEntity.accepted().build();
         } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    @DeleteMapping("{name}")
-    public ResponseEntity<Void> deletePrison(@PathVariable("name") String name){
-        Optional<Prison> prison = prisonService.find(name);
-        if(prison.isPresent()) {
-            prisonService.delete(prison.get());
-            return ResponseEntity.accepted().build();
-        }else {
             return ResponseEntity.notFound().build();
         }
     }
@@ -106,15 +80,4 @@ public class PrisonController {
         }
     }
 
-    @PutMapping("{name}")
-    public ResponseEntity<Void> putPrison(@RequestBody PutPrisonRequest request, @PathVariable("name") String name){
-        Optional<Prison> pris = prisonService.find(name);
-        if (pris.isPresent()) {
-            PutPrisonRequest.dtoToEntityUpdater().apply(pris.get(), request);
-            prisonService.update(pris.get());
-            return ResponseEntity.accepted().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 }
