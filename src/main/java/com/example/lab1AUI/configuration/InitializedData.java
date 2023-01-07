@@ -1,9 +1,11 @@
 package com.example.lab1AUI.configuration;
 
-import com.example.lab1AUI.entity.Prison;
-import com.example.lab1AUI.entity.Prisoner;
-import com.example.lab1AUI.service.PrisonService;
-import com.example.lab1AUI.service.PrisonerService;
+import com.example.lab1AUI.prison.entity.Prison;
+import com.example.lab1AUI.prisoner.entity.Prisoner;
+import com.example.lab1AUI.prisoner.service.PrisonerService;
+import com.example.lab1AUI.prisoner.entity.Prisoner;
+import com.example.lab1AUI.prison.service.PrisonService;
+import com.example.lab1AUI.prisoner.service.PrisonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

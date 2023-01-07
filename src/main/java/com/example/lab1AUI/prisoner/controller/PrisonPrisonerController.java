@@ -1,45 +1,46 @@
-package com.example.lab1AUI.controller;
+package com.example.lab1AUI.prisoner.controller;
 
-import com.example.lab1AUI.dto.*;
-import com.example.lab1AUI.entity.Prison;
-import com.example.lab1AUI.entity.Prisoner;
-import com.example.lab1AUI.service.PrisonService;
-import com.example.lab1AUI.service.PrisonerService;
+import com.example.lab1AUI.prison.entity.Prison;
+import com.example.lab1AUI.prison.service.PrisonService;
+import com.example.lab1AUI.prisoner.dto.GetPrisonerResponse;
+import com.example.lab1AUI.prisoner.dto.GetPrisonersResponse;
+import com.example.lab1AUI.prisoner.dto.PostPrisonerRequest;
+import com.example.lab1AUI.prisoner.dto.PutPrisonerRequest;
+import com.example.lab1AUI.prisoner.entity.Prisoner;
+import com.example.lab1AUI.prisoner.service.PrisonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+
 @RestController
-@RequestMapping("api/prisons")
-public class PrisonController {
+@RequestMapping("api/prisons/{name}/prisoners")
+public class PrisonPrisonerController {
     private PrisonerService prisonerService;
     private PrisonService prisonService;
     @Autowired
-    public PrisonController(PrisonerService prisonerService, PrisonService prisonService){
+    public PrisonPrisonerController(PrisonerService prisonerService, PrisonService prisonService){
         this.prisonerService = prisonerService;
         this.prisonService = prisonService;
     }
 
-    @GetMapping("{name}")
+    @GetMapping
     public ResponseEntity<GetPrisonersResponse> getPrisoners(@PathVariable("name") String name){
         Optional<Prison> prison = prisonService.find(name);
         return prison.map(value -> ResponseEntity.ok(GetPrisonersResponse.entityToDtoMapper().apply(prisonerService.findAll(value))))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-    @GetMapping("{name}/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<GetPrisonerResponse> getPrisoner(@PathVariable("name") String name,
                                                            @PathVariable("id") Integer id){
-        return prisonerService.findByIdAndPrisonName(id, name)
+        return prisonerService.find(id, name)
                 .map(value -> ResponseEntity.ok(GetPrisonerResponse.entityToDtoMapper().apply(value)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
-    @PostMapping("{name}/prisoners")
+    @PostMapping
     public ResponseEntity<Void> postPrisoner(@PathVariable("name") String name,
                                               @RequestBody PostPrisonerRequest request,
                                               UriComponentsBuilder builder){
@@ -55,10 +56,10 @@ public class PrisonController {
             return ResponseEntity.notFound().build();
         }
     }
-    @DeleteMapping("{name}/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Void> deletePrisoner(@PathVariable("name") String name,
                                                 @PathVariable("id") Integer id) {
-        Optional<Prisoner> prisoner = prisonerService.find(id);
+        Optional<Prisoner> prisoner = prisonerService.find(id, name);
         if (prisoner.isPresent()) {
             prisonerService.delete(prisoner.get().getId());
             return ResponseEntity.accepted().build();
@@ -66,11 +67,11 @@ public class PrisonController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PutMapping("{name}/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Void> putPrisoner(@PathVariable("name") String name,
                                              @RequestBody PutPrisonerRequest request,
                                              @PathVariable("id") Integer id){
-        Optional<Prisoner> prisoner = prisonerService.findByIdAndPrisonName(id, name);
+        Optional<Prisoner> prisoner = prisonerService.find(id, name);
         if (prisoner.isPresent()) {
             PutPrisonerRequest.dtoToEntityUpdater().apply(prisoner.get(), request);
             prisonerService.update(prisoner.get());

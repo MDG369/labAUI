@@ -1,11 +1,12 @@
-package com.example.lab1AUI.entity;
+package com.example.lab1AUI.prison.entity;
 
+import com.example.lab1AUI.prisoner.entity.Prisoner;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,4 +20,7 @@ public class Prison implements Serializable {
     @Id
     public String name;
     public int size;
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "prison")
+    @ToString.Exclude
+    private List<Prisoner> prisoners;
 }

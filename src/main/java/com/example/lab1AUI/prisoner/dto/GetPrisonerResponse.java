@@ -1,4 +1,4 @@
-package com.example.lab1AUI.dto;
+package com.example.lab1AUI.prisoner.dto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import com.example.lab1AUI.entity.Prisoner;
+import com.example.lab1AUI.prisoner.entity.Prisoner;
 
 import java.util.function.Function;
 @Getter

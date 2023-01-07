@@ -1,7 +1,7 @@
-package com.example.lab1AUI.entity;
+package com.example.lab1AUI.prisoner.entity;
+import com.example.lab1AUI.prison.entity.Prison;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

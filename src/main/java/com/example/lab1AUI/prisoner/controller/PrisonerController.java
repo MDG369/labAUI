@@ -1,12 +1,13 @@
-package com.example.lab1AUI.controller;
+package com.example.lab1AUI.prisoner.controller;
 
-import com.example.lab1AUI.dto.GetPrisonerResponse;
-import com.example.lab1AUI.dto.GetPrisonersResponse;
-import com.example.lab1AUI.dto.PostPrisonerRequest;
-import com.example.lab1AUI.dto.PutPrisonerRequest;
-import com.example.lab1AUI.entity.Prisoner;
-import com.example.lab1AUI.service.PrisonService;
-import com.example.lab1AUI.service.PrisonerService;
+import com.example.lab1AUI.prisoner.service.PrisonerService;
+import com.example.lab1AUI.prisoner.dto.PutPrisonerRequest;
+import com.example.lab1AUI.prisoner.dto.GetPrisonerResponse;
+import com.example.lab1AUI.prisoner.dto.GetPrisonersResponse;
+import com.example.lab1AUI.prisoner.dto.PostPrisonerRequest;
+import com.example.lab1AUI.prisoner.dto.PutPrisonerRequest;
+import com.example.lab1AUI.prisoner.entity.Prisoner;
+import com.example.lab1AUI.prison.service.PrisonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,26 +23,25 @@ import java.util.function.Function;
 @RequestMapping("api/prisoners")
 public class PrisonerController {
     private PrisonerService prisonerService;
-    private PrisonService prisonService;
 
     @Autowired
-    public PrisonerController(PrisonerService prisonerService, PrisonService prisonService){
+    public PrisonerController(PrisonerService prisonerService){
         this.prisonerService = prisonerService;
-        this.prisonService = prisonService;
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<GetPrisonersResponse> getPrisoners() {
-        List<Prisoner> all = prisonerService.findAll();
-        Function<Collection<Prisoner>, GetPrisonersResponse> mapper = GetPrisonersResponse.entityToDtoMapper();
-        GetPrisonersResponse response = mapper.apply(all);
-        return ResponseEntity.ok(response);
+        return ResponseEntity
+                .ok(GetPrisonersResponse.entityToDtoMapper().apply(prisonerService.findAll()));
     }
     @GetMapping({"{id}"})
     public ResponseEntity<GetPrisonerResponse> getPrisoner(@PathVariable("id") Integer id) {
         return prisonerService.find(id)
-                .map(value -> ResponseEntity.ok(GetPrisonerResponse.entityToDtoMapper().apply(value)))
-                        .orElseGet(() -> ResponseEntity.notFound().build());
+                .map(value -> ResponseEntity
+                        .ok(GetPrisonerResponse.entityToDtoMapper().apply(value)))
+                .orElseGet(() -> ResponseEntity
+                        .notFound()
+                        .build());
     }
     @PostMapping
     public ResponseEntity<Void> postPrisoner(@RequestBody PostPrisonerRequest request, UriComponentsBuilder builder) {
