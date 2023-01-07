@@ -1,6 +1,6 @@
-package com.example.lab1AUI.repository;
+package com.example.lab1AUI.prison.repository;
 
-import com.example.lab1AUI.entity.Prison;
+import com.example.lab1AUI.prison.entity.Prison;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;

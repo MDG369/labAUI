@@ -1,6 +1,6 @@
-package com.example.lab1AUI.event.dto;
+package com.example.lab1AUI.prison.dto;
 
-import com.example.lab1AUI.entity.Prison;
+import com.example.lab1AUI.prison.entity.Prison;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,10 +22,12 @@ import java.util.function.Function;
 
 public class PostPrisonRequest {
     private String name;
+    private int size;
 
-    public static Function<Prison, PostPrisonRequest> entityToDtoMapper() {
-        return request -> PostPrisonRequest.builder()
+    public static Function<PostPrisonRequest, Prison> dtoToEntityMapper() {
+        return request -> Prison.builder()
                 .name(request.getName())
+                .size(request.getSize())
                 .build();
     }
 }

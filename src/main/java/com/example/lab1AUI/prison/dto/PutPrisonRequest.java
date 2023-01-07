@@ -1,6 +1,6 @@
-package com.example.lab1AUI.dto;
+package com.example.lab1AUI.prison.dto;
 
-import com.example.lab1AUI.entity.Prison;
+import com.example.lab1AUI.prison.entity.Prison;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

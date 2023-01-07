@@ -1,7 +1,7 @@
-package com.example.lab1AUI.event.repository;
+package com.example.lab1AUI.prison.event.repository;
 
-import com.example.lab1AUI.event.dto.PostPrisonRequest;
-import com.example.lab1AUI.entity.Prison;
+import com.example.lab1AUI.prison.event.dto.PostPrisonRequest;
+import com.example.lab1AUI.prison.entity.Prison;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -20,6 +20,7 @@ public class PrisonEventRepository {
         restTemplate.delete("/prisons/{name}", prison.getName());
     }
     public void create(Prison prison){
-        restTemplate.postForLocation("/prisons", PostPrisonRequest.entityToDtoMapper().apply(prison));
+        restTemplate.postForLocation(
+                "/prisons", PostPrisonRequest.entityToDtoMapper().apply(prison));
     }
 }

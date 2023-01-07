@@ -1,4 +1,4 @@
-package com.example.lab1AUI.entity;
+package com.example.lab1AUI.prison.entity;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
