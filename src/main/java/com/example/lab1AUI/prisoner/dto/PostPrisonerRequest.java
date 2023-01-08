@@ -28,7 +28,6 @@ public class PostPrisonerRequest {
     private String surname;
     private int age;
     private int cell_number;
-    private String prison;
 
     public static Function<PostPrisonerRequest, Prisoner> dtoToEntityMapper(
     Supplier<Prison>prisonSupplier) {
