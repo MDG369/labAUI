@@ -13,14 +13,14 @@ import java.util.function.Function;
 @ToString
 @EqualsAndHashCode
 
-public class PostPrisonRequest {
+public class GetPrisonResponse {
     private String name;
     private int size;
 
-    public static Function<PostPrisonRequest, Prison> dtoToEntityMapper() {
-        return request -> Prison.builder()
-                .name(request.getName())
-                .size(request.getSize())
+    public static Function<Prison, GetPrisonResponse> entityToDtoMapper() {
+        return prison -> GetPrisonResponse.builder()
+                .name(prison.getName())
+                .size(prison.getSize())
                 .build();
     }
 }
