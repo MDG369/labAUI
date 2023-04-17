@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="Simple spring app"/>
+        <title>LabAUI</title>
+        <link rel="stylesheet" href="../styles.css"/>
+        <link rel="stylesheet" href="add_prisoner.css"/>
+        <script src="../script.js" defer="defer"></script>
+        <script type="module" src="add_prisoner.js" defer="defer"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1>LabAUI</h1>
+            </header>
+
+            <nav class="navigation-bar">
+                <ul>
+                    <li><a href="../index.html">main</a></li>
+                    <li><a href="../prison_list/prison_list.html">prisons</a></li>
+                </ul>
+            </nav>
+
+            <section class="main-section">
+                <article class="text--justified">
+                    <header><h2>Add prisoner</h2></header>
+                    <form class="prisoner__form" id="infoForm">
+                        <label for="name">Name:</label>
+                        <input class="ui-control ui-input" id="name" name="name"/>
+                        <label for="surname">Surname:</label>
+                        <input class="ui-control ui-input" id="surname" name="surname"/>
+                        <label for="age">Age:</label>
+                        <input class="ui-control ui-input" id="age" name="age" type="number"/>
+                        <label for="cell_number">Cell number:</label>
+                        <input class="ui-control ui-input" id="cell_number" name="cell_number" type="number"/>
+                        <input class="ui-control ui-button" type="submit" name="Add"/>
+                    </form>
+                </article>
+                
+            </section>
+
+            <footer class="footer">
+            </footer>
+        </div>
+    </body>
+</html>

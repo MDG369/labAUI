@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="Lab4 AUI"/>
+        <meta name="author" content="Michał Zieliński"/>
+        <title>LabAUI</title>
+        <link rel="stylesheet" href="../styles.css"/>
+        <script src="../script.js" defer="defer"></script>
+        <script type="module" src="prison_list.js" defer="defer"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1>LabAUI</h1>
+            </header>
+
+            <nav class="navigation-bar">
+                <ul>
+                    <li><a href="../index.html">main</a></li>
+                    <li><a href="prison_list.html">prisons</a></li>
+                    <li><a href="../add_prison/add_prison.html">add_prison</a></li>
+                </ul>
+            </nav>
+
+            <section class="main-section">
+                <article class="text--justified">
+                    <header><h2>prisons</h2></header>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>View details</th>
+                                <th>Delete prison</th>
+                                <th>Add prisoner</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td>name</td>
+                                <td><a href="#">view</a></td>
+                                <td>
+                                    <button class="ui-button ui-control">delete</button>
+                                </td>
+                                <td><a href="#">add_prisoner</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+
+            <footer class="footer">
+                
+            </footer>
+        </div>
+    </body>
+</html>
