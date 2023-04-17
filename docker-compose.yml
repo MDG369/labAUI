@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  spring-gateway:
+    container_name: spring-app-gateway
+    build: ./gateway
+    ports: 
+      - "8080:8080"
+
+  spring-prison:
+    container_name: spring-app-prison
+    build: ./spring-prison
+    depends_on:
+      - spring-prisoner
+
+
+  spring-prisoner:
+    container_name: spring-app-prisoner
+    build:
+      context: ./spring-prisoner
+  gui:
+    container_name: node-app
+    build: ./gui
+    ports:
+      - "8083:8083"
